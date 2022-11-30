@@ -1,7 +1,9 @@
 project "assimp"
 	kind "StaticLib"
 	language "C++"
-	configmap {
+	configmap 
+	{
+		["ReleaseWithInfo"] = "Release",
 		["ReleaseNoImGui"] = "Release"
 	}
 
@@ -192,10 +194,11 @@ project "assimp"
 		"contrib/zlib/inftrees.h",
 		"contrib/zlib/trees.h",
 		"contrib/zlib/zutil.h",
-		"contrib/zlib/zlib.h"      
+		"contrib/zlib/zlib.h"
 	}
 
-	includedirs {
+	includedirs
+	{
 		"include",
 		"contrib/irrXML",
 		"contrib/zlib",
@@ -203,19 +206,19 @@ project "assimp"
 	}
 
 	filter "system:windows"
-		systemversion "latest"
-		staticruntime "on"
 		cppdialect "C++17"
+		staticruntime "On"
+		systemversion "latest"
 
 
 		filter "system:linux"
-		cppdialect "gnu++17"
+		cppdialect "C++17"
 		systemversion "latest"
 
 	filter  "configurations:Debug"
 		runtime "Debug"
-		symbols "on"
+		symbols "On"
 
 	filter  "configurations:Release"
 		runtime "Release"
-		optimize "on"
+		optimize "On"
